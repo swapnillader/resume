@@ -20,19 +20,19 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
   <meta property="og:type" content="website" />
   <meta property="og:url" content={canonical} />
   <meta name="twitter:card" content="summary" />
-  <link rel="sitemap" href={`${base}/sitemap-index.xml`} />
+  <link rel="sitemap" href={`${base}sitemap-index.xml`} />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 </head>
 <body>
   <header class="site-header">
-    <a class="name" href={`${base}/`}>{site.name}</a>
-    <nav>
-      <a href={`${base}/`}>about</a>
-      <a href={`${base}/projects/`}>projects</a>
-      <a href={`${base}/writing/`}>writing</a>
-      <a href={`${base}/contact/`}>contact</a>
+    <a class="name" href={`${base}`}>{site.name}</a>
+    <nav aria-label="Main">
+      <a href={`${base}`}>about</a>
+      <a href={`${base}projects/`}>projects</a>
+      <a href={`${base}writing/`}>writing</a>
+      <a href={`${base}contact/`}>contact</a>
     </nav>
   </header>
   <main>
