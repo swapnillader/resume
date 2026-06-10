@@ -1,0 +1,19 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props { project: CollectionEntry<'projects'>; }
+const { project } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const hasPage = !!project.body?.trim();
+const pageUrl = `${base}projects/${project.id}/`;
+---
+<article class="card">
+  <h3>{hasPage ? <a href={pageUrl}>{project.data.title}</a> : project.data.title}</h3>
+  <p>{project.data.blurb}</p>
+  <ul class="tags">{project.data.tags.map((t) => <li>{t}</li>)}</ul>
+  <p class="links">
+    {hasPage && <a href={pageUrl}>Write-up</a>}
+    {project.data.demoUrl && <a href={project.data.demoUrl}>Live demo</a>}
+    {project.data.repoUrl && <a href={project.data.repoUrl}>GitHub</a>}
+  </p>
+</article>
