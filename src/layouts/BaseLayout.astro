@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import site from '../data/site.json';
+import ChatWidget from '../components/ChatWidget.astro';
 
 interface Props { title: string; description: string; }
 const { title, description } = Astro.props;
@@ -44,5 +45,6 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
       <a href={site.links.github}>GitHub</a> · <a href={site.links.linkedin}>LinkedIn</a> · <a href={`mailto:${site.email}`}>Email</a>
     </span>
   </footer>
+  <ChatWidget />
 </body>
 </html>
