@@ -1,0 +1,75 @@
+{
+  "name": "Swapnil Prakash Lader",
+  "role": "AI Engineer — Backend & MLOps",
+  "tagline": "AI systems that are not just intelligent, but dependable in production.",
+  "oneLiner": "Backend and MLOps engineer with 5 years of experience shipping LLM systems to production — scalable APIs, CI/CD automation, and self-healing infrastructure.",
+  "bio": "I build AI-powered systems with a focus on scale, structure, and long-term reliability. As AI coding tools have evolved, my approach has shifted from build-first to design-first: AI makes code easy to generate, but it raises the bar for how well that code needs to hold up. I move fast without compromising system design — clean architecture, readable code, and infrastructure that keeps making sense as systems grow.",
+  "experience": "Five years across backend engineering, scalable APIs, and MLOps/DevOps: batch pipelines processing millions of SKUs, an autoscaling chatbot serving hundreds of thousands of users, and CI/CD automation that brought a production-grade deployment culture to on-prem LLM workstations. I design for failure as a first-class concern — fallbacks, retries, and adaptive workflows that keep systems reliable under real-world conditions.",
+  "skills": [
+    "Python",
+    "FastAPI",
+    "Flask",
+    "Django",
+    "vLLM",
+    "Jenkins",
+    "Grafana",
+    "AWS",
+    "Google Cloud",
+    "CI/CD"
+  ],
+  "email": "claude1128@crowdanalytix.com",
+  "links": {
+    "github": "https://github.com/swapnillader",
+    "linkedin": "https://www.linkedin.com/in/swapnil-mlops-eng",
+    "medium": "https://medium.com/@swapnillader21"
+  },
+  "siteUrl": "https://swapnillader.github.io/resume/",
+  "projects": [
+    {
+      "title": "Autoscaling Chatbot Platform",
+      "blurb": "Chatbot backend serving hundreds of thousands of users with autoscaling infrastructure.",
+      "tags": [
+        "Python",
+        "Google Cloud",
+        "Autoscaling"
+      ],
+      "featured": true,
+      "date": "2023-11-01T00:00:00.000Z",
+      "summary": "## Problem\n\nConversational traffic is spiky. A chatbot serving hundreds of thousands of users needs infrastructure that scales out under load and scales back when idle — without dropping conversations.\n\n## Approach\n\nBuilt the backend on autoscaling infrastructure with load-aware scaling policies, graceful connection draining, and fallback responses when downstream models are saturated. The system stays responsive under real-world load patterns, not just ideal ones."
+    },
+    {
+      "title": "On-Prem LLM Deployment Pipeline",
+      "blurb": "CI/CD automation that deploys LLMs to office workstations with vLLM — production-grade deployment culture for on-prem AI.",
+      "tags": [
+        "Python",
+        "vLLM",
+        "Jenkins",
+        "CI/CD"
+      ],
+      "featured": true,
+      "date": "2025-09-01T00:00:00.000Z",
+      "summary": "## Problem\n\nDeploying LLMs to local workstations was manual and inconsistent — every deployment was a one-off, with no repeatable process and no visibility into what was running where.\n\n## Approach\n\nBuilt an automated CI/CD pipeline that treats on-prem workstations like a production fleet: versioned model rollouts served through vLLM, health checks, and clean rollback paths. Deployment time dropped from ad-hoc manual work to a predictable, orchestrated process — and it introduced a production-grade deployment culture across the org."
+    },
+    {
+      "title": "SKU Batch Processing Platform",
+      "blurb": "Backend pipeline handling millions of SKUs through reliable, observable batch processing.",
+      "tags": [
+        "Python",
+        "FastAPI",
+        "AWS"
+      ],
+      "featured": true,
+      "date": "2024-06-01T00:00:00.000Z",
+      "summary": "## Problem\n\nCatalog operations at millions-of-SKUs scale can't run on request/response patterns — work has to be batched, monitored, and safe to retry.\n\n## Approach\n\nDesigned the batch architecture end to end: chunked processing with idempotent retries, dead-letter handling for poison records, and Grafana dashboards for throughput and failure rates. Failure is treated as a first-class concern — the pipeline self-heals from partial failures instead of requiring manual restarts."
+    }
+  ],
+  "writing": [
+    {
+      "title": "Articles on Medium",
+      "externalUrl": "https://medium.com/@swapnillader21",
+      "featured": true,
+      "date": "2026-06-10T00:00:00.000Z",
+      "summary": ""
+    }
+  ]
+}
