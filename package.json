@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "astro dev",
+    "prebuild": "npm run facts",
     "build": "astro build",
     "preview": "astro preview",
     "facts": "node scripts/build-facts.mjs"
