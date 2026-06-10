@@ -1,0 +1,18 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import site from '../data/site.json';
+---
+<BaseLayout title={`Contact — ${site.name}`} description={`Get in touch with ${site.name}.`}>
+  <h1>Contact</h1>
+  <p class="lede">
+    Recruiting, collaboration, or questions about my work — happy to talk.
+    Fastest: email <a href={`mailto:${site.email}`}>{site.email}</a> or
+    <a href={site.links.linkedin}>LinkedIn</a>.
+  </p>
+  <form class="contact" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+    <label>Name <input type="text" name="name" required /></label>
+    <label>Email <input type="email" name="email" required /></label>
+    <label>Message <textarea name="message" rows="6" required></textarea></label>
+    <button class="button" type="submit">Send</button>
+  </form>
+</BaseLayout>
