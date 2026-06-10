@@ -1,0 +1,48 @@
+---
+import '../styles/global.css';
+import site from '../data/site.json';
+
+interface Props { title: string; description: string; }
+const { title, description } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={canonical} />
+  <meta name="twitter:card" content="summary" />
+  <link rel="sitemap" href={`${base}/sitemap-index.xml`} />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header class="site-header">
+    <a class="name" href={`${base}/`}>{site.name}</a>
+    <nav>
+      <a href={`${base}/`}>about</a>
+      <a href={`${base}/projects/`}>projects</a>
+      <a href={`${base}/writing/`}>writing</a>
+      <a href={`${base}/contact/`}>contact</a>
+    </nav>
+  </header>
+  <main>
+    <slot />
+  </main>
+  <footer class="site-footer">
+    <span>© {new Date().getFullYear()} {site.name}</span>
+    <span>
+      <a href={site.links.github}>GitHub</a> · <a href={site.links.linkedin}>LinkedIn</a> · <a href={`mailto:${site.email}`}>Email</a>
+    </span>
+  </footer>
+</body>
+</html>
