@@ -138,7 +138,7 @@ git commit -m "feat: scaffold Astro project for resume site"
   --bg-2: #f1efe9;
   --ink: #1a1812;
   --ink-2: #4f4a40;
-  --muted: #8a857c;
+  --muted: #6b6660;
   --rule: #e5e1d8;
   --accent: #2f5d9e;
   --serif: "Instrument Serif", Georgia, serif;
@@ -163,6 +163,7 @@ h2 { font-size: 1.7rem; margin: 64px 0 16px; }
 h3 { font-size: 1.25rem; margin: 0 0 6px; }
 a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
 a:hover { color: var(--ink); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 time { color: var(--muted); font-size: 0.85rem; }
 
 .site-header {
@@ -236,7 +237,7 @@ form.contact button { justify-self: start; border: 0; cursor: pointer; }
 .chat-chips { display: flex; gap: 6px; flex-wrap: wrap; padding: 0 12px 8px; }
 .chip { border: 1px solid var(--rule); background: #fff; border-radius: 999px; padding: 4px 10px; font-size: 0.75rem; cursor: pointer; color: var(--ink-2); }
 .chat-panel form { display: flex; border-top: 1px solid var(--rule); }
-.chat-panel input { flex: 1; border: 0; padding: 12px; font: inherit; font-size: 0.9rem; outline: none; }
+.chat-panel input { flex: 1; border: 0; padding: 12px; font: inherit; font-size: 0.9rem; }
 .chat-panel button[type="submit"] { border: 0; background: none; color: var(--accent); padding: 0 14px; cursor: pointer; font-size: 0.9rem; }
 ```
 
@@ -267,19 +268,19 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
   <meta property="og:type" content="website" />
   <meta property="og:url" content={canonical} />
   <meta name="twitter:card" content="summary" />
-  <link rel="sitemap" href={`${base}/sitemap-index.xml`} />
+  <link rel="sitemap" href={`${base}sitemap-index.xml`} />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 </head>
 <body>
   <header class="site-header">
-    <a class="name" href={`${base}/`}>{site.name}</a>
-    <nav>
-      <a href={`${base}/`}>about</a>
-      <a href={`${base}/projects/`}>projects</a>
-      <a href={`${base}/writing/`}>writing</a>
-      <a href={`${base}/contact/`}>contact</a>
+    <a class="name" href={`${base}`}>{site.name}</a>
+    <nav aria-label="Main">
+      <a href={`${base}`}>about</a>
+      <a href={`${base}projects/`}>projects</a>
+      <a href={`${base}writing/`}>writing</a>
+      <a href={`${base}contact/`}>contact</a>
     </nav>
   </header>
   <main>
@@ -448,7 +449,7 @@ interface Props { project: CollectionEntry<'projects'>; }
 const { project } = Astro.props;
 const base = import.meta.env.BASE_URL;
 const hasPage = !!project.body?.trim();
-const pageUrl = `${base}/projects/${project.id}/`;
+const pageUrl = `${base}projects/${project.id}/`;
 ---
 <article class="card">
   <h3>{hasPage ? <a href={pageUrl}>{project.data.title}</a> : project.data.title}</h3>
@@ -499,7 +500,7 @@ const posts = (await getCollection('writing'))
     <h1>{site.tagline}</h1>
     <p class="lede">{site.oneLiner}</p>
     <p class="hero-links">
-      <a class="button" href={`${base}/resume.pdf`} download>Download resume</a>
+      <a class="button" href={`${base}resume.pdf`} download>Download resume</a>
       <a href={site.links.github}>GitHub</a>
       <a href={site.links.linkedin}>LinkedIn</a>
       <a href={`mailto:${site.email}`}>Email</a>
@@ -516,7 +517,7 @@ const posts = (await getCollection('writing'))
   <section>
     <h2>Featured projects</h2>
     <div class="grid">{projects.map((p) => <ProjectCard project={p} />)}</div>
-    <p><a href={`${base}/projects/`}>All projects →</a></p>
+    <p><a href={`${base}projects/`}>All projects →</a></p>
   </section>
 
   <section>
@@ -524,14 +525,14 @@ const posts = (await getCollection('writing'))
     <ul class="post-list">
       {posts.map((p) => (
         <li>
-          <a href={p.data.externalUrl ?? `${base}/writing/${p.id}/`}>
+          <a href={p.data.externalUrl ?? `${base}writing/${p.id}/`}>
             {p.data.title}{p.data.externalUrl ? ' ↗' : ''}
           </a>
           <time datetime={p.data.date.toISOString()}>{p.data.date.toISOString().slice(0, 10)}</time>
         </li>
       ))}
     </ul>
-    <p><a href={`${base}/writing/`}>All writing →</a></p>
+    <p><a href={`${base}writing/`}>All writing →</a></p>
   </section>
 </BaseLayout>
 ```
@@ -593,7 +594,7 @@ const { Content } = await render(project);
 const base = import.meta.env.BASE_URL;
 ---
 <BaseLayout title={`${project.data.title} — ${site.name}`} description={project.data.blurb}>
-  <p><a href={`${base}/projects/`}>← All projects</a></p>
+  <p><a href={`${base}projects/`}>← All projects</a></p>
   <h1>{project.data.title}</h1>
   <p class="lede">{project.data.blurb}</p>
   <ul class="tags">{project.data.tags.map((t) => <li>{t}</li>)}</ul>
@@ -641,7 +642,7 @@ const posts = (await getCollection('writing'))
   <ul class="post-list">
     {posts.map((p) => (
       <li>
-        <a href={p.data.externalUrl ?? `${base}/writing/${p.id}/`}>
+        <a href={p.data.externalUrl ?? `${base}writing/${p.id}/`}>
           {p.data.title}{p.data.externalUrl ? ' ↗' : ''}
         </a>
         <time datetime={p.data.date.toISOString()}>{p.data.date.toISOString().slice(0, 10)}</time>
@@ -671,7 +672,7 @@ const { Content } = await render(post);
 const base = import.meta.env.BASE_URL;
 ---
 <BaseLayout title={`${post.data.title} — ${site.name}`} description={post.data.title}>
-  <p><a href={`${base}/writing/`}>← All writing</a></p>
+  <p><a href={`${base}writing/`}>← All writing</a></p>
   <h1>{post.data.title}</h1>
   <time datetime={post.data.date.toISOString()}>{post.data.date.toISOString().slice(0, 10)}</time>
   <div class="prose"><Content /></div>
@@ -754,7 +755,7 @@ const base = import.meta.env.BASE_URL;
 ---
 <BaseLayout title={`Not found — ${site.name}`} description="Page not found.">
   <h1>Page not found</h1>
-  <p class="lede">That page doesn't exist. <a href={`${base}/`}>Back to home →</a></p>
+  <p class="lede">That page doesn't exist. <a href={`${base}`}>Back to home →</a></p>
 </BaseLayout>
 ```
 
@@ -779,16 +780,28 @@ Add this line directly before `</body>`:
 <script is:inline data-goatcounter="https://YOUR_CODE.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 ```
 
-- [ ] **Step 5: Verify**
+- [ ] **Step 5: USER INPUT — social preview image**
+
+Ask the user for a 1200×630 image for link previews; save as `public/og.png`. If they have none, skip this and Step 6 (og:image meta) and record a follow-up.
+
+- [ ] **Step 6: Add og:image to `src/layouts/BaseLayout.astro`**
+
+Add directly after the `og:url` meta line:
+
+```astro
+<meta property="og:image" content={new URL(`${base}og.png`, Astro.site)} />
+```
+
+- [ ] **Step 7: Verify**
 
 Run: `npm run build`
 Expected: `Complete!`, `dist/404.html` exists, `dist/sitemap-index.xml` exists.
 
-- [ ] **Step 6: Commit**
+- [ ] **Step 8: Commit**
 
 ```bash
-git add src/pages/404.astro public/robots.txt src/layouts/BaseLayout.astro
-git commit -m "feat: add 404 page, robots.txt, and analytics"
+git add src/pages/404.astro public/robots.txt src/layouts/BaseLayout.astro public/og.png
+git commit -m "feat: add 404 page, robots.txt, analytics, and social preview"
 ```
 
 ---
@@ -985,7 +998,7 @@ git commit -m "feat: add chat worker with Gemini guardrails and facts pipeline"
 import site from '../data/site.json';
 const base = import.meta.env.BASE_URL;
 ---
-<div id="chat-widget" data-endpoint={site.chatEndpoint} data-contact={`${base}/contact/`}>
+<div id="chat-widget" data-endpoint={site.chatEndpoint} data-contact={`${base}contact/`}>
   <div class="chat-panel">
     <div class="chat-head">Ask me about Swapnil's work — answers come from this site only.</div>
     <div class="chat-log"></div>
