@@ -1,0 +1,22 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import site from '../../data/site.json';
+
+const base = import.meta.env.BASE_URL;
+const posts = (await getCollection('writing'))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+<BaseLayout title={`Writing — ${site.name}`} description={`Articles and write-ups by ${site.name}.`}>
+  <h1>Writing</h1>
+  <ul class="post-list">
+    {posts.map((p) => (
+      <li>
+        <a href={p.data.externalUrl ?? `${base}writing/${p.id}/`}>
+          {p.data.title}{p.data.externalUrl ? ' ↗' : ''}
+        </a>
+        <time datetime={p.data.date.toISOString()}>{p.data.date.toISOString().slice(0, 10)}</time>
+      </li>
+    ))}
+  </ul>
+</BaseLayout>
