@@ -1,0 +1,70 @@
+---
+import site from '../data/site.json';
+const base = import.meta.env.BASE_URL;
+---
+<div id="chat-widget" data-endpoint={site.chatEndpoint} data-contact={`${base}contact/`}>
+  <div class="chat-panel">
+    <div class="chat-head">Ask me about Swapnil's work — answers come from this site only.</div>
+    <div class="chat-log"></div>
+    <div class="chat-chips">
+      <button type="button" class="chip">What projects has Swapnil built?</button>
+      <button type="button" class="chip">What's his experience with LLMs?</button>
+      <button type="button" class="chip">How do I contact him?</button>
+    </div>
+    <form>
+      <input type="text" maxlength="500" placeholder="Ask a question…" aria-label="Chat message" />
+      <button type="submit">Send</button>
+    </form>
+  </div>
+  <button type="button" class="chat-toggle" aria-label="Open chat">💬</button>
+</div>
+
+<script>
+  const root = document.getElementById('chat-widget')!;
+  const endpoint = root.dataset.endpoint!;
+  const contactUrl = root.dataset.contact!;
+  const panel = root.querySelector('.chat-panel')!;
+  const log = root.querySelector('.chat-log')!;
+  const form = root.querySelector('form')!;
+  const input = root.querySelector('input')!;
+  const history: { role: string; text: string }[] = [];
+
+  root.querySelector('.chat-toggle')!.addEventListener('click', () => panel.classList.toggle('open'));
+  root.querySelectorAll('.chip').forEach((chip) =>
+    chip.addEventListener('click', () => {
+      input.value = chip.textContent ?? '';
+      form.requestSubmit();
+    }),
+  );
+
+  function add(role: string, text: string) {
+    const div = document.createElement('div');
+    div.className = `msg ${role}`;
+    div.textContent = text;
+    log.appendChild(div);
+    log.scrollTop = log.scrollHeight;
+    return div;
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const message = input.value.trim();
+    if (!message) return;
+    input.value = '';
+    add('user', message);
+    const pending = add('model', '…');
+    try {
+      const res = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message, history: history.slice(-6) }),
+      });
+      if (!res.ok) throw new Error(String(res.status));
+      const { reply } = await res.json();
+      pending.textContent = reply;
+      history.push({ role: 'user', text: message }, { role: 'model', text: reply });
+    } catch {
+      pending.innerHTML = `Chat is napping — <a href="${contactUrl}">email me instead</a>.`;
+    }
+  });
+</script>
