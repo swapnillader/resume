@@ -45,12 +45,16 @@ owner input before launch.
 
 ## 7. Go live
 
-- [ ] Merge `build-resume-site` into `main` and push
-- [ ] Confirm repo Settings → Pages → Source = "GitHub Actions"
-- [ ] Verify https://swapnillader.github.io/resume/ renders
+- [x] Merge `build-resume-site` into `main` and push
+- [x] Confirm repo Settings → Pages → Source = "GitHub Actions" (deploy workflow ran)
+- [x] Verify https://swapnillader.github.io/resume/ renders — all routes,
+      resume.pdf, og.png return 200
 - [ ] Run the manual verification checklist (Task 13 of
-      `docs/superpowers/plans/2026-06-10-resume-website.md`): all routes, chat
-      on-topic/off-topic/rate-limit, form submission, PDF download, OG preview
+      `docs/superpowers/plans/2026-06-10-resume-website.md`): remaining manual
+      bits — chat rate-limit (21 msgs in an hour), real form submission
+      (sends email), OG preview via social-card debugger.
+      Already verified: all routes 200, chat on-topic + off-topic refusal,
+      PDF download, form action wired.
 
 ## Note
 
