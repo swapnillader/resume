@@ -12,5 +12,5 @@
     "linkedin": "https://www.linkedin.com/in/swapnil-mlops-eng",
     "medium": "https://medium.com/@swapnillader21"
   },
-  "chatEndpoint": "https://resume-chat.REPLACE-SUBDOMAIN.workers.dev/chat"
+  "chatEndpoint": "https://resume-chat.swapnillader.workers.dev/chat"
 }

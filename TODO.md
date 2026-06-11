@@ -5,16 +5,18 @@ owner input before launch.
 
 ## 1. Deploy the chatbot Worker (blocks chatbot)
 
-- [ ] Get a free Gemini API key: https://aistudio.google.com/apikey (no card needed)
-- [ ] Log in to Cloudflare: `npx wrangler login` (run from `worker/`)
-- [ ] Deploy: `cd worker && npx wrangler deploy` — note the printed `*.workers.dev` URL
-- [ ] Set the secret: `npx wrangler secret put GEMINI_API_KEY` (paste key when prompted)
-- [ ] Update `chatEndpoint` in `src/data/site.json` to `https://<worker-url>/chat`
-      (replaces the `REPLACE-SUBDOMAIN` placeholder)
+- [x] Get a free Gemini API key: https://aistudio.google.com/apikey (no card needed)
+- [x] Log in to Cloudflare: `npx wrangler login` (run from `worker/`)
+- [x] Deploy: `cd worker && npx wrangler deploy` — deployed at
+      https://resume-chat.swapnillader.workers.dev
+- [x] Set the secret: `npx wrangler secret put GEMINI_API_KEY` (uses `x-goog-api-key` header)
+- [x] Update `chatEndpoint` in `src/data/site.json` to
+      `https://resume-chat.swapnillader.workers.dev/chat`
 
 ## 2. Resume PDF (blocks "Download resume" button — currently 404s)
 
-- [ ] Save resume as `public/resume.pdf`
+- [x] Save resume as `public/resume.pdf` — generated from site content via
+      `scripts/resume-pdf.html` (headless Chrome); replace with your own PDF anytime
 
 ## 3. Formspree contact form (blocks contact form)
 
@@ -30,8 +32,9 @@ owner input before launch.
 
 ## 5. Social preview image — optional
 
-- [ ] Provide a 1200×630 image, save as `public/og.png`
-- [ ] Add after the `og:url` meta in `src/layouts/BaseLayout.astro`:
+- [x] Provide a 1200×630 image, save as `public/og.png` — generated from
+      `scripts/og-image.html` (headless Chrome screenshot); replace anytime
+- [x] Add after the `og:url` meta in `src/layouts/BaseLayout.astro`:
       `<meta property="og:image" content={new URL(`${base}og.png`, Astro.site)} />`
 
 ## 6. Real content — follow-up
