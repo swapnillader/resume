@@ -6,7 +6,7 @@
   "bio": "I build AI-powered systems with a focus on scale, structure, and long-term reliability. As AI coding tools have evolved, my approach has shifted from build-first to design-first: AI makes code easy to generate, but it raises the bar for how well that code needs to hold up. I move fast without compromising system design — clean architecture, readable code, and infrastructure that keeps making sense as systems grow.",
   "experience": "Five years across backend engineering, scalable APIs, and MLOps/DevOps: batch pipelines processing millions of SKUs, an autoscaling chatbot serving hundreds of thousands of users, and CI/CD automation that brought a production-grade deployment culture to on-prem LLM workstations. I design for failure as a first-class concern — fallbacks, retries, and adaptive workflows that keep systems reliable under real-world conditions.",
   "skills": ["Python", "FastAPI", "Flask", "Django", "vLLM", "Jenkins", "Grafana", "AWS", "Google Cloud", "CI/CD"],
-  "email": "claude1128@crowdanalytix.com",
+  "email": "swapnillader@gmail.com",
   "links": {
     "github": "https://github.com/swapnillader",
     "linkedin": "https://www.linkedin.com/in/swapnil-mlops-eng",
