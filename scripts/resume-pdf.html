@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Swapnil Prakash Lader — Resume</title>
+<style>
+  @page { size: A4; margin: 14mm 16mm; }
+  * { box-sizing: border-box; }
+  body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #1a1a1a; font-size: 10.5pt; line-height: 1.45; margin: 0;
+  }
+  header { border-bottom: 2px solid #1a1a1a; padding-bottom: 10px; margin-bottom: 14px; }
+  h1 { font-size: 20pt; margin: 0 0 2px; letter-spacing: 0.5px; }
+  .role { font-size: 12pt; font-weight: 600; color: #333; margin: 0 0 6px; }
+  .contact { font-size: 9pt; color: #444; }
+  .contact a { color: #444; text-decoration: none; }
+  .contact span + span::before { content: "  ·  "; }
+  h2 {
+    font-size: 11pt; text-transform: uppercase; letter-spacing: 1.2px;
+    border-bottom: 1px solid #bbb; padding-bottom: 2px; margin: 14px 0 6px;
+  }
+  p { margin: 0 0 6px; }
+  ul { margin: 4px 0 8px; padding-left: 16px; }
+  li { margin-bottom: 3px; }
+  .proj-title { font-weight: 700; }
+  .tags { color: #666; font-size: 9pt; }
+  .skills { display: flex; flex-wrap: wrap; gap: 5px; padding: 0; margin: 4px 0 0; list-style: none; }
+  .skills li { border: 1px solid #999; border-radius: 3px; padding: 1px 7px; font-size: 9pt; margin: 0; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Swapnil Prakash Lader</h1>
+  <p class="role">AI Engineer — Backend &amp; MLOps</p>
+  <p class="contact">
+    <span><a href="mailto:claude1128@crowdanalytix.com">claude1128@crowdanalytix.com</a></span>
+    <span><a href="https://github.com/swapnillader">github.com/swapnillader</a></span>
+    <span><a href="https://www.linkedin.com/in/swapnil-mlops-eng">linkedin.com/in/swapnil-mlops-eng</a></span>
+    <span><a href="https://medium.com/@swapnillader21">medium.com/@swapnillader21</a></span>
+    <span><a href="https://swapnillader.github.io/resume/">swapnillader.github.io/resume</a></span>
+  </p>
+</header>
+
+<h2>Summary</h2>
+<p>Backend and MLOps engineer with 5 years of experience shipping LLM systems to production — scalable APIs, CI/CD automation, and self-healing infrastructure. I build AI-powered systems with a focus on scale, structure, and long-term reliability: clean architecture, readable code, and infrastructure that keeps making sense as systems grow. I design for failure as a first-class concern — fallbacks, retries, and adaptive workflows that keep systems reliable under real-world conditions.</p>
+
+<h2>Experience Highlights</h2>
+<ul>
+  <li>Five years across backend engineering, scalable APIs, and MLOps/DevOps for production AI systems.</li>
+  <li>Built batch pipelines processing millions of SKUs with idempotent retries and dead-letter handling.</li>
+  <li>Ran an autoscaling chatbot backend serving hundreds of thousands of users.</li>
+  <li>Brought production-grade CI/CD deployment culture to on-prem LLM workstations using vLLM and Jenkins.</li>
+</ul>
+
+<h2>Selected Projects</h2>
+
+<p><span class="proj-title">On-Prem LLM Deployment Pipeline</span> <span class="tags">— Python · vLLM · Jenkins · CI/CD</span></p>
+<ul>
+  <li>Automated CI/CD pipeline treating on-prem workstations like a production fleet: versioned model rollouts served through vLLM, health checks, and clean rollback paths.</li>
+  <li>Cut deployment time from ad-hoc manual work to a predictable, orchestrated process and established a production-grade deployment culture across the org.</li>
+</ul>
+
+<p><span class="proj-title">SKU Batch Processing Platform</span> <span class="tags">— Python · FastAPI · AWS · Grafana</span></p>
+<ul>
+  <li>Designed end-to-end batch architecture for millions of SKUs: chunked processing with idempotent retries, dead-letter handling for poison records, and Grafana dashboards for throughput and failure rates.</li>
+  <li>Pipeline self-heals from partial failures instead of requiring manual restarts.</li>
+</ul>
+
+<p><span class="proj-title">Autoscaling Chatbot Platform</span> <span class="tags">— Python · Google Cloud · Autoscaling</span></p>
+<ul>
+  <li>Built chatbot backend serving hundreds of thousands of users on autoscaling infrastructure: load-aware scaling policies, graceful connection draining, and fallback responses when downstream models are saturated.</li>
+  <li>System stays responsive under real-world load patterns, scaling out under load and back when idle without dropping conversations.</li>
+</ul>
+
+<h2>Skills</h2>
+<ul class="skills">
+  <li>Python</li><li>FastAPI</li><li>Flask</li><li>Django</li><li>vLLM</li>
+  <li>Jenkins</li><li>Grafana</li><li>AWS</li><li>Google Cloud</li><li>CI/CD</li>
+</ul>
+</body>
+</html>
