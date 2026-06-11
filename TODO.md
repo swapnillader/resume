@@ -20,9 +20,9 @@ owner input before launch.
 
 ## 3. Formspree contact form (blocks contact form)
 
-- [ ] Create free form at https://formspree.io (50 submissions/month free)
-- [ ] Replace `YOUR_FORM_ID` in `src/pages/contact.astro` with the real form ID
-      from `https://formspree.io/f/<FORM_ID>`
+- [x] Create free form at https://formspree.io (50 submissions/month free)
+- [x] Replace `YOUR_FORM_ID` in `src/pages/contact.astro` with the real form ID
+      (`meewllln`)
 
 ## 4. Analytics — optional
 
