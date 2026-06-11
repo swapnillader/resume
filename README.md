@@ -1,47 +1,24 @@
-# Resume Website
+# Swapnil Prakash Lader — Personal Site
 
-Personal site for Swapnil Prakash Lader — Astro 5 static site on GitHub Pages
-(https://swapnillader.github.io/resume/) with a guardrailed Gemini chatbot served
-by a Cloudflare Worker.
+Live at [swapnillader.github.io/resume](https://swapnillader.github.io/resume/).
 
-## Editing content
+A personal portfolio and resume website featuring an AI chatbot that answers
+questions about my background, projects, and writing.
 
-- `src/data/site.json` — identity: name, role, bio, skills, links, chat endpoint.
-- `src/content/projects/*.md` — project entries (frontmatter + optional write-up body).
-- `src/content/writing/*.md` — posts; set `externalUrl` in frontmatter to link out
-  instead of generating a page.
+## Highlights
 
-The site deploys automatically: push to `main` runs `.github/workflows/deploy.yml`
-(Astro build → GitHub Pages).
+- **Static-first architecture** — built with Astro 5, content managed through
+  typed content collections (`projects`, `writing`) with Markdown frontmatter,
+  so adding a project or post is a single file change.
+- **Guardrailed AI chatbot** — a Cloudflare Worker fronts the Gemini API and
+  constrains answers to a generated facts file, so the assistant only speaks
+  from verified site content rather than open-ended model knowledge.
+- **Automated content pipeline** — a build step derives the chatbot's knowledge
+  base from the site's own data and content frontmatter, keeping the bot in
+  sync with the site from a single source of truth.
+- **Zero-touch deploys** — pushes to `main` trigger a GitHub Actions workflow
+  that builds the site and publishes it to GitHub Pages.
 
-## Chatbot facts — important
+## Stack
 
-The chatbot answers only from `worker/facts.json`, generated from `site.json` and
-content frontmatter. `npm run build` regenerates it automatically (`prebuild` hook),
-but the deployed Worker does NOT update on its own.
-
-**After changing any content, redeploy the Worker:**
-
-```bash
-npm run facts
-cd worker
-npx wrangler deploy
-```
-
-## Worker setup (one-time)
-
-```bash
-cd worker
-npx wrangler login
-npx wrangler deploy                      # note the printed workers.dev URL
-npx wrangler secret put GEMINI_API_KEY   # key from https://aistudio.google.com/apikey
-```
-
-Then set `chatEndpoint` in `src/data/site.json` to `https://<worker-url>/chat`.
-
-## Local development
-
-```bash
-npm install
-npm run dev    # http://localhost:4321/resume/
-```
+Astro 5 · TypeScript · Cloudflare Workers · Gemini API · GitHub Actions · GitHub Pages
