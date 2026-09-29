@@ -12,8 +12,8 @@ const pageUrl = `${base}projects/${project.id}/`;
   <p>{project.data.blurb}</p>
   <ul class="tags">{project.data.tags.map((t) => <li>{t}</li>)}</ul>
   <p class="links">
-    {hasPage && <a href={pageUrl}>Write-up</a>}
-    {project.data.demoUrl && <a href={project.data.demoUrl}>Live demo</a>}
-    {project.data.repoUrl && <a href={project.data.repoUrl}>GitHub</a>}
+    {hasPage && <a href={pageUrl}>write-up →</a>}
+    {project.data.demoUrl && <a href={project.data.demoUrl}>live demo</a>}
+    {project.data.repoUrl && <a href={project.data.repoUrl}>github</a>}
   </p>
 </article>

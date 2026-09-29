@@ -15,31 +15,32 @@ const posts = (await getCollection('writing'))
 ---
 <BaseLayout title={`${site.name} — ${site.role}`} description={site.oneLiner}>
   <section class="hero">
+    <p class="eyebrow">{site.role}</p>
     <h1>{site.tagline}</h1>
     <p class="lede">{site.oneLiner}</p>
     <p class="hero-links">
-      <a class="button" href={`${base}resume.pdf`} download>Download resume</a>
-      <a href={site.links.github}>GitHub</a>
-      <a href={site.links.linkedin}>LinkedIn</a>
-      <a href={`mailto:${site.email}`}>Email</a>
+      <a class="button" href={`${base}resume.pdf`} download>↓ resume.pdf</a>
+      <a href={site.links.github}>github</a>
+      <a href={site.links.linkedin}>linkedin</a>
+      <a href={`mailto:${site.email}`}>email</a>
     </p>
   </section>
 
   <section>
-    <h2>About</h2>
+    <h2>about</h2>
     <p class="prose">{site.bio}</p>
     <p class="prose">{site.experience}</p>
     <ul class="tags">{site.skills.map((s) => <li>{s}</li>)}</ul>
   </section>
 
   <section>
-    <h2>Featured projects</h2>
+    <h2>featured-projects</h2>
     <div class="grid">{projects.map((p) => <ProjectCard project={p} />)}</div>
-    <p><a href={`${base}projects/`}>All projects →</a></p>
+    <p><a href={`${base}projects/`}>all projects →</a></p>
   </section>
 
   <section>
-    <h2>Recent writing</h2>
+    <h2>recent-writing</h2>
     <ul class="post-list">
       {posts.map((p) => (
         <li>
@@ -50,6 +51,6 @@ const posts = (await getCollection('writing'))
         </li>
       ))}
     </ul>
-    <p><a href={`${base}writing/`}>All writing →</a></p>
+    <p><a href={`${base}writing/`}>all writing →</a></p>
   </section>
 </BaseLayout>
